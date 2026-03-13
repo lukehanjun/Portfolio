@@ -3,214 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanjun Yoo - Portfolio</title>
+    <title>Hanjun Yoo</title>
     <style>
+        :root {
+            --bg: #f5f2fb;
+            --paper: #fffdfd;
+            --surface: #ffffff;
+            --text: #20222b;
+            --muted: #666d7a;
+            --accent: #7f58b3;
+            --line: #d9cce9;
+            --shadow: 0 20px 50px rgba(55, 34, 89, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: #fcfcfc;
+            margin: 0;
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(127, 88, 179, 0.14), transparent 28%),
+                linear-gradient(180deg, #f6f0fb 0%, #faf8fc 32%, #f3f4f8 100%);
+            line-height: 1.65;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.2rem;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 1rem;
-        }
+
         a {
-            color: #3498db;
+            color: var(--accent);
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
+        .page {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 32px 20px 56px;
+        }
+
+        .sheet {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(217, 204, 233, 0.9);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 28px;
+            padding: 34px;
+            align-items: center;
+            background:
+                linear-gradient(135deg, rgba(127, 88, 179, 0.08), rgba(255, 255, 255, 0) 55%),
+                var(--paper);
+        }
+
+        .portrait {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 22px;
+            object-fit: cover;
+            object-position: center top;
+            border: 1px solid rgba(127, 88, 179, 0.18);
+            box-shadow: 0 14px 34px rgba(49, 39, 77, 0.14);
+            background: #e8e2f1;
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--accent);
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.4rem, 5vw, 3.5rem);
+            line-height: 1.05;
+        }
+
+        .summary {
+            margin: 18px 0 0;
+            max-width: 58ch;
+            color: var(--muted);
+            font-size: 1.02rem;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .contact a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 9px 14px;
+            border: 1px solid rgba(127, 88, 179, 0.18);
+            border-radius: 999px;
+            background: rgba(127, 88, 179, 0.05);
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 0 34px 34px;
+        }
+
         section {
-            margin-top: 2.5rem;
+            padding-top: 28px;
         }
+
+        section + section {
+            border-top: 1px solid var(--line);
+        }
+
         h2 {
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin: 0 0 18px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
-        .item {
-            margin-bottom: 1.5rem;
+
+        .entry {
+            margin-bottom: 22px;
         }
-        .item-header {
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-header {
             display: flex;
             justify-content: space-between;
+            gap: 18px;
             align-items: baseline;
-            margin-bottom: 0.5rem;
+            margin-bottom: 6px;
         }
-        .item-title {
-            font-weight: bold;
-            font-size: 1.1rem;
+
+        .entry-title {
+            margin: 0;
+            font-size: 1.04rem;
+            font-weight: 700;
         }
-        .item-date {
-            color: #7f8c8d;
+
+        .entry-date {
+            color: var(--muted);
             font-size: 0.95rem;
+            white-space: nowrap;
         }
+
+        .entry-subtitle {
+            margin: 0 0 8px;
+            color: #404653;
+            font-weight: 600;
+        }
+
         ul {
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
+            margin: 0;
+            padding-left: 20px;
+            color: var(--muted);
         }
-        li {
-            margin-bottom: 0.3rem;
+
+        li + li {
+            margin-top: 6px;
         }
-        .contact-info {
-            margin-bottom: 2rem;
+
+        .facts {
+            display: grid;
+            gap: 12px;
+            color: var(--muted);
         }
-        
-        @media (max-width: 600px) {
-            .item-header {
-                flex-direction: column;
+
+        .facts strong {
+            color: var(--text);
+        }
+
+        @media (max-width: 760px) {
+            .page {
+                padding: 16px 12px 36px;
             }
-            .item-date {
-                margin-top: 0.2rem;
+
+            .sheet {
+                border-radius: 22px;
+            }
+
+            .hero,
+            .content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .portrait {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .entry-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .entry-date {
+                white-space: normal;
             }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Hanjun Yoo</h1>
-        <div class="subtitle">ML Engineer / Researcher</div>
-        <div class="contact-info">
-            <a href="https://www.linkedin.com/in/hanjun-yoo-2063202b2" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-        </div>
-    </header>
-
-    <main>
-        <section>
-            <h2>Research</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">Lab Intern, KAIST AMI Lab & GIST AI Lab</span>
-                    <span class="item-date">Mar 2025 – Dec 2025</span>
+    <div class="page">
+        <main class="sheet">
+            <section class="hero">
+                <img class="portrait" src="profile.jpg" alt="Portrait of Hanjun Yoo">
+                <div>
+                    <p class="eyebrow">ML Engineer / Researcher</p>
+                    <h1>Hanjun Yoo</h1>
+                    <p class="summary">
+                        I am a ML engineer/researcher passionate on building an AI system that can forever
+                        learn on its own across multiple domains. I have hands-on experience on both
+                        exploring and solving problems in AI/ML research, and applying it to real-world
+                        problems while creating a visually appealing product.
+                    </p>
+                    <div class="contact">
+                        <a href="mailto:lukehanjun@gmail.com">lukehanjun@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/hanjun-yoo-2063202b2" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="Resume_HanjunYoo_v2.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a>
+                    </div>
                 </div>
-                <ul>
-                    <li>Developed a diffusion model that can generate interactive images, such as infinitely looping image or puzzle images by applying specific geometric conditions.</li>
-                    <li>Developed a robot manipulation policy that can better understand spatial locations, by integrating location information.</li>
-                </ul>
-            </div>
+            </section>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">Research Intern, LG AI Research (Vision Lab)</span>
-                    <span class="item-date">Jun 2024 – Dec 2024</span>
-                </div>
-                <ul>
-                    <li>Developed and improved document understanding model, using both data-based and model structure-based approaches.</li>
-                    <li>Added multi-language support (En, Kr, Jp, Cn), ability to distinguish Image/Molecule/Math Expression, and increased the maximum number of queries in prediction.</li>
-                    <li>Achieved 8%p performance increase for private testset, and scored 91% on publicly available testset.</li>
-                </ul>
-            </div>
-        </section>
+            <div class="content">
+                <section>
+                    <h2>Research</h2>
 
-        <section>
-            <h2>Experience & Projects</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">Breaking Image Frame in Diffusion</span>
-                    <span class="item-date">Nov 2025 – Dec 2025</span>
-                </div>
-                <ul>
-                    <li>Proposed a diffusion framework which embeds global geometric constraints directly into the generation process.</li>
-                </ul>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">National Science Museum of Korea - AI Hackathon</span>
-                    <span class="item-date">Sep 2025</span>
-                </div>
-                <ul>
-                    <li>Developed an app/web that recommends users science-themed tourist attractions near the museum that they can visit.</li>
-                </ul>
-            </div>
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">Lab Intern, KAIST AMI Lab &amp; GIST AI Lab</h3>
+                            <div class="entry-date">Mar 2025 - Dec 2025</div>
+                        </div>
+                        <ul>
+                            <li>Developed a diffusion model that can generate interactive images, such as infinitely looping image or puzzle images by applying specific geometric conditions.</li>
+                            <li>Developed a robot manipulation policy that can better understand spatial locations, by integrating location information.</li>
+                        </ul>
+                    </article>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">Project MEDI-KNEE</span>
-                    <span class="item-date">Feb 2024 – Apr 2024</span>
-                </div>
-                <ul>
-                    <li>Developed a Knee-MRI analysis service that could assist medical staffs during diagnosis.</li>
-                    <li>Using 3 AI models, provides 1) The probability of this patient having illness 2) Importance of every slide in the MRI 3) Why the model thinks this way, using Grad-CAM.</li>
-                    <li>Achieved around 5%p higher sensitivity compared to the base research paper, and received positive feedback from doctors.</li>
-                </ul>
-            </div>
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">Research Intern, LG AI Research</h3>
+                            <div class="entry-date">Jun 2024 - Dec 2024</div>
+                        </div>
+                        <ul>
+                            <li>Developed and improved document understanding model, using both data-based and model structure-based approaches.</li>
+                            <li>Added multi-language support (En, Kr, Jp, Cn), ability to distinguish Image/Molecule/Math Expression, and increased the maximum number of queries in prediction.</li>
+                            <li>Achieved 8%p performance increase for private testset, and scored 91% on publicly available testset.</li>
+                        </ul>
+                    </article>
+                </section>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">X-Ray Segmentation Challenge, 1st place (NAVER Connect)</span>
-                    <span class="item-date">Jan 2024 – Feb 2024</span>
-                </div>
-                <ul>
-                    <li>A kaggle-like challenge for multi-label segmentation of X-Ray images.</li>
-                    <li>Used augmentation methods that makes bone boundaries clearer, and combined instance segmentation results for better performance.</li>
-                </ul>
-            </div>
+                <section>
+                    <h2>Experience &amp; Projects</h2>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">Turtle-ing, 3rd place in OASIS Hackathon</span>
-                    <span class="item-date">Jul 2021</span>
-                </div>
-                <ul>
-                    <li>Developed a service that detects and alerts users in forward-head posture.</li>
-                    <li>Alerts users who are too close to the screen, provides daily average distance to the screen, and provides hand-made stretch exercise videos.</li>
-                </ul>
-            </div>
-        </section>
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">Project MEDI-KNEE</h3>
+                            <div class="entry-date">Feb 2024 - Apr 2024</div>
+                        </div>
+                        <ul>
+                            <li>Developed a Knee-MRI analysis service that could assist medical staffs during diagnosis.</li>
+                            <li>Using 3 AI models, provides 1) The probability of this patient having illness 2) Importance of every slide in the MRI 3) Why the model thinks this way, using Grad-CAM.</li>
+                            <li>Achieved around 5%p higher sensitivity compared to the base research paper, and received positive feedback from doctors.</li>
+                        </ul>
+                    </article>
 
-        <section>
-            <h2>Education</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">University of California, Berkeley</span>
-                    <span class="item-date">Jan 2026 – May 2026</span>
-                </div>
-                <div>Computer Science Exchange Student</div>
-            </div>
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">X-Ray Segmentation Competition, 1st place</h3>
+                            <div class="entry-date">Jan 2024</div>
+                        </div>
+                        <ul>
+                            <li>A kaggle-like competition for multi-label segmentation of X-Ray images.</li>
+                            <li>Used augmentation methods that makes bone boundaries clearer, and combined instance segmentation results for better performance.</li>
+                        </ul>
+                    </article>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">Gwangju Institute of Science and Technology (GIST)</span>
-                    <span class="item-date">Mar 2021 – Present</span>
-                </div>
-                <div>Bachelor of Computer Science (In progress)</div>
-                <ul>
-                    <li>TGPA 3.9 / 4.0 (4.38 / 4.5)</li>
-                    <li>Member -> Division head of student council/union (Mar 2021 - Feb 2022)</li>
-                    <li>Google Developer Student Club (Mar 2021 - Jun 2022)</li>
-                </ul>
-            </div>
-        </section>
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">Turtle-ing, 3rd place in OASIS Hackathon</h3>
+                            <div class="entry-date">Jul 2021</div>
+                        </div>
+                        <ul>
+                            <li>Developed a service that detects and alerts users in forward-head posture.</li>
+                            <li>Alerts users who are too close to the screen, provides daily average distance to the screen, and provides hand-made stretch exercise videos.</li>
+                        </ul>
+                    </article>
+                </section>
 
-        <section>
-            <h2>Additional Information</h2>
-            
-            <div class="item">
-                <ul>
-                    <li><strong>Languages:</strong> English and Korean (English Proficiency - TOEFL iBT 110 / 120)</li>
-                    <li><strong>Skills:</strong> Python/Pytorch, C/C++, Rust, Javascript/Typescript, React/Next.js, Figma</li>
-                </ul>
-            </div>
-        </section>
-    </main>
+                <section>
+                    <h2>Education</h2>
 
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">University of California, Berkeley</h3>
+                            <div class="entry-date">Jan 2026 - May 2026</div>
+                        </div>
+                        <p class="entry-subtitle">Computer Science, Exchange student (In progress)</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">Korea Advanced Institute of Science and Technology</h3>
+                            <div class="entry-date">Sep 2025 - Dec 2025</div>
+                        </div>
+                        <p class="entry-subtitle">Computer Science, Exchange student</p>
+                        <ul>
+                            <li>TGPA 3.9 / 4.0 (4.38 / 4.5)</li>
+                        </ul>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-header">
+                            <h3 class="entry-title">Gwangju Institute of Science and Technology</h3>
+                            <div class="entry-date">Mar 2021 - Present</div>
+                        </div>
+                        <p class="entry-subtitle">Bachelor of Computer Science (In progress)</p>
+                        <ul>
+                            <li>TGPA 3.9 / 4.0 (4.38 / 4.5)</li>
+                            <li>Member -> Division head of student council/union (Mar 2021 - Feb 2022)</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section>
+                    <h2>Additional Information</h2>
+                    <div class="facts">
+                        <div><strong>Languages:</strong> English and Korean</div>
+                        <div><strong>English Proficiency:</strong> TOEFL iBT 110 / 120</div>
+                        <div><strong>Skills:</strong> Python/Pytorch, C/C++, Rust, Javascript/Typescript, React/Next.js, Figma</div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
